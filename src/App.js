@@ -25,7 +25,7 @@ const App = () => {
   }, 1000);
 
   useEffect(() => {
-    if (time == 0) {
+    if (time === 0) {
       wretch('https://home-notifications.onrender.com/status/door')
         .get()
         .json((json) => setIsDoorOpened(json.isDoorOpened));
