@@ -3,9 +3,10 @@ import useInterval from 'use-interval';
 import wretch from 'wretch';
 
 const App = () => {
+  const timeToUpdate = 5;
   const [isAlertEnabled, setIsAlertEnabled] = useState(false);
   const [isDoorOpened, setIsDoorOpened] = useState(false);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(timeToUpdate);
 
   useEffect(() => {
     wretch('https://home-notifications.onrender.com/status/alert')
@@ -20,7 +21,7 @@ const App = () => {
     if (time > 0) {
       setTime(time - 1);
     } else {
-      setTime(10);
+      setTime(timeToUpdate);
     }
   }, 1000);
 
