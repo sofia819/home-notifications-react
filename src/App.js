@@ -13,10 +13,16 @@ const App = () => {
   useEffect(() => {
     wretch('https://home-notifications.onrender.com/status/alert')
       .get()
-      .json((json) => setIsAlertEnabled(json.isAlertEnabled));
+      .json((json) => {
+        setIsAlertEnabled(json.isAlertEnabled);
+        setIsAlertWithinTimeFrame(json.isWithinTimeframe);
+      });
     wretch('https://home-notifications.onrender.com/status/door')
       .get()
-      .json((json) => setIsDoorOpened(json.isDoorOpened));
+      .json((json) => {
+        setIsDoorOpened(json.isDoorOpened);
+        setDoorOpenedSince(json.doorOpenedSince);
+      });
   }, []);
 
   useInterval(() => {
